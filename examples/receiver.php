@@ -4,13 +4,14 @@ ob_start();
 //print "<pre>";
 require_once "../smpp.php";//SMPP protocol
 //connect to the smpp server
-$tx=new SMPP('localhost',2000);
-//$tx->debug=true;
+$tx=new SMPP('192.168.1.90',5018);
+$tx->debug=true;
 
 //bind the receiver
-$tx->system_type="WWW";
+//$tx->system_type="WWW";
 $tx->addr_npi=1;
-$tx->bindReceiver("login","password");
+$tx->bindReceiver("username","password");
+
 do{
 	//read incoming sms
 	$sms=$tx->readSMS();
@@ -30,7 +31,6 @@ $tx->close();
 unset($tx);
 //clean any output
 ob_end_clean();
-//print "</pre>";
 
 function process_message($from,$to,$message){
 	print "Received SMS\nFrom: $from\nTo:   $to\nMsg:  $message";
