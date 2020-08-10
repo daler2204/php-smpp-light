@@ -8,7 +8,7 @@ This use code from paladin and online city
 Tested in Windows 10 and Ubuntu
 
 ## Transmitter
-````
+```php
 <?php
 
 require_once "../smpp.php";
@@ -22,11 +22,11 @@ unset($tx);
 
 ?>
 
-````
+```
 
 If the SMSC receive GSM 03.38 encoder you can encode your message with:
 
-```
+```php
 require_once "../gsmencoder.php";
 $gsmencoder = new GsmEncoder;
 $message = $gsmencoder->utf8_to_gsm0338($message);
@@ -41,7 +41,7 @@ This library send enquire link to SMPP server every 10 seconds, you need to chan
 
 ## Receiver
 
-```
+```php
 <?php
 //for reading pending SMS you must frequently call this script. Use crontab job for example.
 ob_start();
